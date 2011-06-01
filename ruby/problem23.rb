@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def get_proper_divisors(n)
   sqrt_n = (n ** 0.5)
   divisors = []

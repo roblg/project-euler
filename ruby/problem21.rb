@@ -32,4 +32,4 @@ sum = 0
 end
 
 puts amicable.sort
-print "Answer: ", sum
+puts "Answer: " + sum.to_s
