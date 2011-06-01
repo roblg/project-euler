@@ -1,0 +1,25 @@
+
+(defun is-palindrome (s)
+  (let ((len (length s)))
+    (cond ((= 0 len) nil)
+	  ((= 1 len) t)
+	  ((= 2 len) (char= (char s 0) (char s 1)))
+	  (t (and (char= (char s 0) (char s (1- len))) 
+		  (is-palindrome (subseq s 1 (1- len))))))))
+
+(defun is-base-10-palindrome (n)
+  (let ((n-string (format nil "~A" n)))
+    (is-palindrome n-string)))
+
+(defun is-base-2-palindrome (n)
+  (let ((n-string (format nil "~2R" n)))
+    (is-palindrome n-string)))
+
+(defun problem-36 ()
+  (let ((sum 0))
+    (do ((i 1 (1+ i)))
+	((> i 1000000))
+      (if (and (is-base-10-palindrome i)
+	       (is-base-2-palindrome i))
+	  (incf sum i)))
+    sum))
