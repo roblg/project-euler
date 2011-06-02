@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'sieve'
+require_relative 'util/sieve'
 
 sieve = Sieve.new
 
@@ -36,16 +36,17 @@ best_b = 41
 
 -999.upto(999) {
   |a|
-  puts a
   b_values.each {
     |b|
     length = prime_list(a,b)
     if length > best_length then
-      print "New winner: ", a, ",", b, ",", length, "\n"
+      # print "New winner: ", a, ",", b, ",", length, "\n"
       best_length = length
       best_a = a
       best_b = b
     end
   }
 }
+
+print "Problem 27: ", (best_a * best_b), "\n"
 

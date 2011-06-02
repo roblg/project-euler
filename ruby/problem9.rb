@@ -11,7 +11,8 @@ c = (1000 - a - b)
     c = (1000 - a - b)
     # print a, ",", b, ",", c, "\n"
     if (c ** 2 == (a **2 + b ** 2)) then
-      print= a,",",b,",",c,"\n"
+      print "(a,b,c) = (",a,",",b,",",c,")\n"
+      print "Problem 9: ", a * b * c, "\n"
       break
     end
     

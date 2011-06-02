@@ -24,4 +24,4 @@ for i in (11...10000)
   end
 end
 
-puts num
+print "Problem 55: ", num, "\n"

@@ -42,14 +42,13 @@ for i in @@abundant_numbers
   end
 end
 
-puts sum_of_two_abundant_numbers.length
+#puts sum_of_two_abundant_numbers.length
 
 sum = 0
 for i in (1..sum_of_two_abundant_numbers.length-1)
   if !sum_of_two_abundant_numbers[i] then
-    puts i
     sum += i
   end
 end
 
-puts sum
+print "Problem 23: ", sum, "\n"

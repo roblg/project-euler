@@ -16,4 +16,4 @@ names.each_with_index {
   sum = sum + (name_score * (i + 1))
 }
 
-puts "Answer: " + sum.to_s
+print "Problem 22: ", sum.to_s, "\n"

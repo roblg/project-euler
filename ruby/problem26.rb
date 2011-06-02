@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bigdecimal'
-require_relative 'sieve'
+require_relative 'util/sieve'
 
 numbers = []
 @sieve = Sieve.new()
@@ -51,6 +51,7 @@ for i in (1..1000)
   end
 end
 
-puts "d = " + best_d.to_s
-puts "cycle = " + max_repeating.to_s
+print "Problem 26: ", best_d.to_s, "\n"
+print "Length of cycle: ", max_repeating.to_s, "\n"
+
 

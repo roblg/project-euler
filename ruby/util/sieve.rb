@@ -1,3 +1,6 @@
+
+# Implements the Sieve of Eratosthenes (http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+# computing primes from 2 up to n
 class Sieve
   
   def primes_upto(n)

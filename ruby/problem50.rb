@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'sieve'
+require_relative 'util/sieve'
 
 s = Sieve.new
 
@@ -29,7 +29,7 @@ for i in 0...primes.length do
     end
     
     if prime_map.include?(sum) and (j - i + 1) > overall_length then
-      puts sum.to_s + " (length: " + (j-i+1).to_s + ")"
+      # puts sum.to_s + " (length: " + (j-i+1).to_s + ")"
       overall_length = j-i + 1
       overall_sum = sum
     end

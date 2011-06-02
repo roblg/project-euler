@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 solutions = Hash.new
 
 for a in 1..1000 do
@@ -16,11 +18,24 @@ for a in 1..1000 do
   end
 end
 
-for p in solutions.keys.sort do
-  if p < 1000 then
-    puts "#{p}: #{solutions[p].length}"
+max_val = 0
+max_key = 0
+
+solutions.entries.each {
+  |x,y|
+  if x < 1000 and y.length > max_val then
+    max_key = x
+    max_val = y.length
   end
-end
+}
+
+print "Problem 39: ", max_key, "\n"
+
+# for p in solutions.keys.sort do
+#   if p < 1000 then
+#     puts "#{p}: #{solutions[p].length}"
+#   end
+# end
 
 # puts solutions
 

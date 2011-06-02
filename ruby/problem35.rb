@@ -1,4 +1,6 @@
-require_relative 'sieve'
+#!/usrbin/env ruby 
+
+require_relative 'util/sieve'
 
 def is_circular_prime(n)
   n_len = n.to_s.length
@@ -13,13 +15,11 @@ def is_circular_prime(n)
   return true
 end
 
-
 sieve = Sieve.new
 
 primes = sieve.primes_upto(1000000)
 
 @@prime_test = []
-
 
 # circular primes below 1000000
 for i in primes
@@ -34,4 +34,4 @@ for i in primes
   end
 end
 
-puts num_circular_primes
+print "Problem 35: ", num_circular_primes, "\n"

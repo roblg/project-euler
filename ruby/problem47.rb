@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'prime_factors'
+require_relative 'util/prime_factors'
 
 @@pf = PrimeFactors.new(1000000)
 

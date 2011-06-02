@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def sum_of_corners(side_length)
   if (side_length == 1)
     return [1]
@@ -15,4 +17,4 @@ while (i <= 1001) do
   i += 2
 end
 
-puts sum
+print "Problem 28: ", sum, "\n"

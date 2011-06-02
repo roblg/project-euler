@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative 'sieve'
+# unsolved
+
+require_relative 'util/sieve'
 
 target = 10**8
 
@@ -21,4 +23,4 @@ for i in 0...primes.length do
   end
 end
 
-puts count
+print "Problem 187: ", count, "\n"

@@ -1,7 +1,6 @@
-#!/usr/bin/env ruby
 
+# Generates Fibonacci numbers, starting with 1, 1
 class FibGenerator
-  
   
   def initialize
     @i = 0
@@ -16,9 +15,4 @@ class FibGenerator
     return result
   end
   
-  
 end
-
-f = FibGenerator.new
-
-1.upto(12) { |x| puts f.get_next }

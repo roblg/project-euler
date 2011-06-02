@@ -43,4 +43,5 @@ words.each {
     num_words = num_words + 1
   end
 }
-puts "Number of triangle words: " + num_words.to_s
+
+print "Problem 42: ", num_words.to_s, "\n"

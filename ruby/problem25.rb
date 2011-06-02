@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'fibgenerator'
+require_relative 'util/fibgenerator'
 
 f = FibGenerator.new
 
@@ -11,6 +11,4 @@ begin
   v = f.get_next
 end while v.to_s.length != 1000
 
-
-puts v
-puts i
+print "Problem 25: ", i, "\n"

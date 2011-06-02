@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 @@triangle_numbers = {}
 @@pentagonal_numbers = {}
 @@hexagonal_numbers = {}
@@ -23,7 +25,7 @@ for i in (286...500000)
   num = triangle_number(i)
   
   if @@pentagonal_numbers[num] and @@hexagonal_numbers[num] then
-    puts num
+    puts "Problem 45: " + num.to_s
     break
   end
 end

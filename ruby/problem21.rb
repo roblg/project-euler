@@ -24,12 +24,9 @@ sum = 0
   s = sum_of_factors(n)
   s2 = sum_of_factors(s)
   if (s2 == n and n != s) then
-    #sum = sum + n
-    #sum = sum + s2
     amicable.push(n)
     sum = sum + n
   end
 end
 
-puts amicable.sort
-puts "Answer: " + sum.to_s
+print "Problem 21: ", sum.to_s, "\n"

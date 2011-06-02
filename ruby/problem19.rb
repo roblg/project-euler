@@ -16,5 +16,4 @@ first_sundays = []
   }
 }
 
-print "Answer: ", first_sundays.size, "\n"
-puts first_sundays
+print "Problem 19: ", first_sundays.size, "\n"

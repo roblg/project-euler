@@ -9,8 +9,6 @@ file.each_line {
   grid.push(line.chop.split)
 }
 
-# grid.each { |x| print x.join(",") + "\n" }
-
 def get_row(grid, i, j)
   # print i.to_s + "," + j.to_s + "\n"
   return grid[i][j].to_i * grid[i][j+1].to_i * grid[i][j+2].to_i * grid[i][j+3].to_i
@@ -76,5 +74,4 @@ n_rows.times do
   end
 end
 
-print "Maximum value overall: " + max_val.to_s + "\n"
-puts values.max
+print "Problem 11: " + max_val.to_s + "\n"

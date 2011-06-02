@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 @@currency = [200, 100, 50, 20, 10, 5, 2, 1]
 
 def num_ways(n, old_i)
@@ -16,12 +18,4 @@ def num_ways(n, old_i)
   end
 end
 
-puts num_ways(200, 200)
-#puts num_ways(2, 200)
-#puts num_ways(3, 200)
-#uts num_ways(4, 200)
-#puts num_ways(5, 200)
-
-##2, 2
-#2, 1, 1
-#1, 1, 1, 1
+print "Problem 31: ", num_ways(200, 200), "\n"

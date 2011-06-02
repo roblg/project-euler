@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'sieve'
+require_relative 'util/sieve'
 
 sieve = Sieve.new
 
@@ -45,7 +45,7 @@ prime_count = 0
 sum = 0
 for prime in @@primes_list
   if left_truncatable(prime) and right_truncatable(prime) then
-    puts prime
+    # puts prime
     sum += prime
     prime_count += 1
   end
@@ -57,5 +57,5 @@ end
 if prime_count < 11 then
   puts "failed to find 11 primes"
 else
-  puts "found 11 primes, sum %d" % sum
+  print "Problem 37: ", sum, "\n"
 end

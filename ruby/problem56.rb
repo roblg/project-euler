@@ -20,4 +20,4 @@ for a in (1..100)
   end
 end
 
-puts max_sum
+print "Problem 56: ", max_sum, "\n"

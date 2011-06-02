@@ -8,9 +8,6 @@ for i in (2..100)
   @@factorials[i] = i * @@factorials[i-1]
 end
 
-puts @@factorials[3]
-puts @@factorials[4]
-
 def n_c_r(n, r)
 return @@factorials[n] / (@@factorials[r] * @@factorials[n-r])
 end
@@ -24,4 +21,4 @@ for n in (1..100)
   end
 end
 
-puts num
+print "Problem 53: ", num, "\n"

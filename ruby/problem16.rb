@@ -8,4 +8,4 @@ v.to_s.each_char {
   sum = sum + (c.ord - ?0.ord)
 }
 
-print "Answer: ", sum, "\n"
+print "Problem 16: ", sum, "\n"
