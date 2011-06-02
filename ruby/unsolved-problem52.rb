@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# not solved well 
+
 i = 125874
 while true do
   x = i.to_s.split("").sort.join("")
