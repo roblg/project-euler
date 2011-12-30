@@ -3,9 +3,10 @@ from math import floor
 from collections import deque
 
 class Sieve:
-    def __init__(self):
+    def __init__(self, upto=2):
         self.primeset = set([2])
         self.__upto = 2
+        self.compute_upto(upto)
     def is_prime(self, n):
         if n > self.__upto:
             self.compute_upto(n*2 + 1)
