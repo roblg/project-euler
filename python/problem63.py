@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 from itertools import count
-
-def num_digits_pow(x,y):
-    import math
-    return 1 + math.floor(y * math.log10(x))
+from util import num_digits_pow
 
 def solve():
     
