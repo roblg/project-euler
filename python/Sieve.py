@@ -32,8 +32,8 @@ def not_divisible_by(m, n):
     """
     return n % m != 0
 
-# faster, but less awesome Sieve implementation
-class Sieve:
+# memory-efficient, not-pythonic, but it works (reasonably quickly)
+class SieveSlow:
     def __init__(self, upto=2):
         self.primeset = deque([2])
         self.__upto = 2
@@ -71,20 +71,11 @@ class Sieve:
                 p = possibles.popleft()
             # at this point, everything left has to be prime
             self.primeset.extend(possibles)
-            self.__upto = n
-        print "DONE"
-        
-# "Redo everything"
-# 2mln -> 16s
-# 4mln -> 44s     
-
-# "Keep a cache"
-# 2lmn -> ~16s
-# 4mln -> 
-   
-                
-# Pythonic-ish, but too too slow
-class SieveOld:
+            self.__upto = n   
+           
+# fairly pythonic (I think) Sieve imlementation that's faster
+# than the non-pythonic version     
+class Sieve:
     def __init__(self, upto=2):
         self.primeset = [2]
         self.__upto = 2
@@ -104,14 +95,14 @@ class SieveOld:
             new_possibles = (i for i in xrange(self.__upto+1, n+1) if i % 2 != 0)
             # first, loop over all of our existing primes, and remove any definite
             # non-primes from the possibles
-            for cmp_val in self.primeset:
+            for cmp_val in ifilter(lambda x: x*x <= n, self.primeset):
                 # see comment below about partial() and cmp_val
                 new_possibles = ifilter(partial(not_divisible_by,cmp_val), new_possibles)
             
             # at this point we know the first thing in new_possibles is prime (or
             # there isn't anything in new possibles)
             cmp_val = next_or_none(new_possibles)
-            while cmp_val is not None:
+            while cmp_val is not None and cmp_val**2 <= n:
                 #print "Appending: %d" % cmp_val
                 self.primeset.append(cmp_val)
     
@@ -124,13 +115,8 @@ class SieveOld:
                 #print "New Possibles: %s" % str(new_possibles)
                 cmp_val = next_or_none(new_possibles)
             
+            self.primeset.extend(new_possibles)
+            
             # if we get here, we should have all the primes up to n
             self.__upto = n
  
-#s = Sieve()
-#s.compute_upto(1000000)
-#s.compute_upto(2000000)
-
-def run():
-    s = Sieve()
-    s.compute_upto(1000000)
