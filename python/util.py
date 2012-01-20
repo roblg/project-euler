@@ -20,3 +20,10 @@ def fib_upto(n):
 		yield j
 		i = j
 		j = t
+		
+def get_input_file(problem_num):
+    import os
+    script_dir = os.path.dirname(__file__)
+    input_file = os.path.join(script_dir, 'input', 'problem%d.txt' % problem_num)
+    return open(input_file)
+    
