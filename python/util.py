@@ -26,4 +26,10 @@ def get_input_file(problem_num):
     script_dir = os.path.dirname(__file__)
     input_file = os.path.join(script_dir, 'input', 'problem%d.txt' % problem_num)
     return open(input_file)
-    
+
+def get_matrix_p81_p82(problem_num):
+    matrix = []
+    for line in get_input_file(problem_num):
+        vals = [int(v) for v in line.split(',')]
+        matrix.append(vals)
+    return matrix
