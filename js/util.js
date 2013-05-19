@@ -44,7 +44,12 @@ var primesUpTo = exports.primesUpTo = function (n, initialPrimes) {
 		
 	} while (p < Math.sqrt(n));
 	
-	Array.prototype.push.apply(result, candidates);
+	// Intriguingly, Array.prototype.push.apply blows up with
+	// "RangeError: Maximum call stack size exceeded" trying to 
+	// compute primes up to 2M. Array.concat does not. 
+	// Array.prototype.push.apply(result, candidates);
+
+	result = result.concat(candidates);
 	
 	return result;
 }
