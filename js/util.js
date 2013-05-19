@@ -20,10 +20,19 @@ var range = exports.range = function (a, b) {
 	return arr;
 }
 
-var primesUpTo = exports.primesUpTo = function (n) {
-	var result = [],
-		candidates = range(2, n+1),
-		p;
+var primesUpTo = exports.primesUpTo = function (n, initialPrimes) {
+	var p, candidates, result = [];
+		
+	if (initialPrimes) {
+		// if we have an initial set of primes, use those as the first
+		// part of the candidates
+		candidates = initialPrimes.concat( 
+			range(initialPrimes[initialPrimes.length - 1] + 1, n + 1)
+		);
+	} else {
+		// if we aren't given initial primes, start with everything
+		candidates = range(2, n + 1);
+	}
 	
 	do {
 		p = candidates.shift();
@@ -39,6 +48,29 @@ var primesUpTo = exports.primesUpTo = function (n) {
 	
 	return result;
 }
+
+var isPrime = exports.isPrime = (function () {
+
+	var primes = [2];
+
+	var isPrimeHelper = function (n) {
+
+		// if n greater than maximum prime, let's compute some
+		// more primes
+		if (n > primes[primes.length - 1]) {
+			primes = primesUpTo( (2*n) + 1, primes);
+		}
+
+		isPrimeHelper.primes = primes;
+
+		// TODO: binary search this
+		return primes.indexOf(n) > 0;
+	}
+
+	isPrimeHelper.primes = primes;
+	return isPrimeHelper;
+
+})();
 
 var primeFactors = exports.primeFactors = function (n) {
 	var primesToN = primesUpTo(Math.ceil(Math.sqrt(n))),
