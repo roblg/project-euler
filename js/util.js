@@ -111,3 +111,14 @@ var isPalindrome = exports.isPalindrome = function (str) {
 	
 	return i >= j;
 }
+
+var getDivisors = exports.getDivisors = function (n) {
+	var divisors = [];
+	var squareRoot = Math.sqrt(n);
+	for (var i = 2; i <= squareRoot; i++) {
+		if (n % i === 0) {
+			divisors.push(i, n / i);
+		}
+	}
+	return divisors;
+}
