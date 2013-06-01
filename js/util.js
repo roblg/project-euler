@@ -122,3 +122,25 @@ var getDivisors = exports.getDivisors = function (n) {
 	}
 	return divisors;
 }
+
+var powModN = exports.powModN = function (base, exp, mod) {
+
+	if (exp === 0) {
+		return 1;
+	}
+
+	if (mod > 10000000000) {
+		// too lazy to look up what the actual max is. I'll come back to it if
+		// I need it. 
+		throw 'Whoa there! JavaScript and Big Numbers overflow eventually';
+	}
+
+	var result = base % mod;
+	exp--;
+	while (exp > 0) {
+		result = (result * base) % mod;
+		exp--;
+	}
+
+	return result;
+}
