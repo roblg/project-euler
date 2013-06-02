@@ -93,7 +93,16 @@ var primeFactors = exports.primeFactors = function (n) {
 }
 
 var sum = exports.sum = function () {
-	var args = Array.prototype.slice.call(arguments);
+	var args;
+	if (arguments.length === 1) {
+		// assume it's an array
+		args = arguments[0].slice();
+	} else {
+		// assume we've received several parameters, and
+		// we should sum all of them
+		args = Array.prototype.slice.call(arguments);
+	}
+	
 	return args.reduce(function (x, y) {
 		return x + y;
 	});
@@ -141,6 +150,31 @@ var powModN = exports.powModN = function (base, exp, mod) {
 		result = (result * base) % mod;
 		exp--;
 	}
+
+	return result;
+}
+
+// brute force. compute all permutations at once. 
+// TODO: make this more elegant (iterator)
+var permutations = exports.permutations = function (arr) {
+
+	var result = [];
+	var helper = function (curr, remain) {
+		if (remain.length === 0) {
+			result.push(curr.slice()); // copy
+			return;
+		}
+
+		var val;
+		for (var i = 0; i < remain.length; i++) {
+			curr.push(remain[i]);
+			helper(curr, remain.slice(0, i).concat(remain.slice(i+1)));
+			curr.pop();
+		}
+
+	}
+
+	helper([], arr);
 
 	return result;
 }

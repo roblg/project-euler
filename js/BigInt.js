@@ -114,6 +114,23 @@ BigInt.prototype.multiply = function (other) {
 	return new BigInt(digitMultiply(topDigits, bottomDigits));
 }
 
+BigInt.prototype.pow = function (exp) {
+	if (exp === 0) {
+		return new BigInt(1);
+	} else if (exp === 1) {
+		return this;
+	}
+
+	var resultDigits = this._digits;
+	exp--;
+
+	while (exp > 0) {
+		resultDigits = digitMultiply(resultDigits, this._digits);	
+	}
+
+	return new BigInt(resultDigits);
+}
+
 BigInt.prototype.toString = function () {
 	var reversedDigits = this._digits.slice().reverse();
 	return reversedDigits.join(''); // TODO: strip off leading 0s
