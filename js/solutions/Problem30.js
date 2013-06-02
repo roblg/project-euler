@@ -1,20 +1,11 @@
 
 function digitsTo5thPowerSum (n) {
-	var sum = require("../util").sum,
-		digits = extractDigits(n);
+	var util = require("../util"),
+		sum = util.sum,
+		digits = util.extractDigits(n);
 	return sum(digits.map(function (d) {
 		return Math.pow(d, 5); 
 	}));
-}
-
-function extractDigits(n) {
-	var result = [];
-	do {
-		result.push(n % 10);
-		n = Math.floor(n / 10);
-	} while (n > 0);
-	result.reverse();
-	return result;
 }
 
 exports.solve = function () {
