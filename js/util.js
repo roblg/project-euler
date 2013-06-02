@@ -94,7 +94,7 @@ var primeFactors = exports.primeFactors = function (n) {
 
 var sum = exports.sum = function () {
 	var args;
-	if (arguments.length === 1) {
+	if (arguments.length === 1 && typeof arguments[0].length !== 'undefined') {
 		// assume it's an array
 		args = arguments[0].slice();
 	} else {
@@ -126,10 +126,17 @@ var getDivisors = exports.getDivisors = function (n) {
 	var squareRoot = Math.sqrt(n);
 	for (var i = 2; i <= squareRoot; i++) {
 		if (n % i === 0) {
-			divisors.push(i, n / i);
+			divisors.push(i);
+			if (i !== n / i) {
+				divisors.push(n / i);
+			}
 		}
 	}
 	return divisors;
+}
+
+var getProperDivisors = exports.getProperDivisors = function (n) {
+	return [1].concat(getDivisors(n));
 }
 
 var powModN = exports.powModN = function (base, exp, mod) {

@@ -1,10 +1,8 @@
 
 var sumOfDivisors = function (n) {
 	var util = require("../util");
-	var divisors = util.getDivisors(n);
-	// util.getDivisors doesn't include [1,n], so we'll add 1
-	divisors.push(1);
-	return util.sum.apply(null, divisors);
+	var divisors = util.getProperDivisors(n);
+	return util.sum(divisors);
 }
 
 
