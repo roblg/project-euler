@@ -108,12 +108,12 @@ var sum = exports.sum = function () {
 	});
 }
 
-var isPalindrome = exports.isPalindrome = function (str) {
+var isPalindrome = exports.isPalindrome = function (input /* String|Array */) {
 	
 	var i = 0,
-		j = str.length - 1;
+		j = input.length - 1;
 	
-	while (i <= j && str[i] === str[j]) {
+	while (i <= j && input[i] === input[j]) {
 		i++;
 		j--;
 	}
