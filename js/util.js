@@ -26,9 +26,10 @@ var primesUpTo = exports.primesUpTo = function (n, initialPrimes) {
 	if (initialPrimes) {
 		// if we have an initial set of primes, use those as the first
 		// part of the candidates
-		candidates = initialPrimes.concat( 
-			range(initialPrimes[initialPrimes.length - 1] + 1, n + 1)
-		);
+		candidates = initialPrimes.slice();
+		for (var i = candidates[candidates.length - 1] + 1; i <= n; i++) {
+			candidates.push(i);
+		}
 	} else {
 		// if we aren't given initial primes, start with everything
 		candidates = range(2, n + 1);
@@ -63,13 +64,23 @@ var isPrime = exports.isPrime = (function () {
 		// if n greater than maximum prime, let's compute some
 		// more primes
 		if (n > primes[primes.length - 1]) {
+
+			// optimize for the fact that it's *probably not* prime.
+			// check if it's divisible by any prime we have computed first
+			var defNotPrime = primes.some(function (p) {
+				return n % p === 0;
+			});
+			if (defNotPrime) {
+				return false;
+			}
+
 			primes = primesUpTo( (2*n) + 1, primes);
 		}
 
 		isPrimeHelper.primes = primes;
 
 		// TODO: binary search this
-		return primes.indexOf(n) > 0;
+		return primes.indexOf(n) >= 0;
 	}
 
 	isPrimeHelper.primes = primes;
@@ -194,4 +205,18 @@ var extractDigits = exports.extractDigits = function (n) {
 	} while (n > 0);
 	result.reverse();
 	return result;
+}
+
+var cornersOfSpiral = exports.cornersOfSpiral = function (sideLength) {
+	if (sideLength === 1) {
+		return [1];
+	}
+
+	var sideSquared = sideLength * sideLength;
+	return [
+		sideSquared, 
+		sideSquared - (sideLength - 1),
+		sideSquared - 2 * (sideLength - 1),
+		sideSquared - 3 * (sideLength - 1)
+	];
 }
