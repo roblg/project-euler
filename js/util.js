@@ -133,7 +133,13 @@ var isPalindrome = exports.isPalindrome = function (input /* String|Array */) {
 }
 
 var getDivisors = exports.getDivisors = function (n) {
-	var divisors = [];
+	var d = getProperDivisors(n).slice();
+	d.push(n);
+	return d;
+}
+
+var getProperDivisors = exports.getProperDivisors = function (n) {
+	var divisors = [1]; // we skip 'n' for proper divisors
 	var squareRoot = Math.sqrt(n);
 	for (var i = 2; i <= squareRoot; i++) {
 		if (n % i === 0) {
@@ -144,10 +150,6 @@ var getDivisors = exports.getDivisors = function (n) {
 		}
 	}
 	return divisors;
-}
-
-var getProperDivisors = exports.getProperDivisors = function (n) {
-	return [1].concat(getDivisors(n));
 }
 
 var powModN = exports.powModN = function (base, exp, mod) {
@@ -219,4 +221,15 @@ var cornersOfSpiral = exports.cornersOfSpiral = function (sideLength) {
 		sideSquared - 2 * (sideLength - 1),
 		sideSquared - 3 * (sideLength - 1)
 	];
+}
+
+var gcd = exports.gcd = function (a, b) {
+	while (a !== b) {
+		if ( a < b) {
+			b = b - a; 
+		} else {
+			a = a - b;
+		}
+	}
+	return a;
 }
