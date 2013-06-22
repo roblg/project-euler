@@ -10,6 +10,9 @@ exports.solve = function () {
 	
 	var util = require("../util");
 
+	// TODO: there's probably a more elegant way to go about this,
+	// but brute-force is just barely fast enough. 
+
 	var count = 0;
 	var chain, digits, temp;
 	for (var i = 1; i < 1000000; i++) {
