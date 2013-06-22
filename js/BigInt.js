@@ -25,7 +25,11 @@ var BigInt = function (input /* [Number|String|Array] */) {
 		this._digits.reverse();
 	} else {
 		// if the input is an array, it's assume to already be in least-significant-first order
-		this._digits = input;
+		if (input.every(function (d) { return d === 0 })) {
+			this._digits = [0];
+		} else {
+			this._digits = input;
+		}
 	}
 }
 
@@ -40,7 +44,7 @@ var BigInt = function (input /* [Number|String|Array] */) {
 		carry = Math.floor(temp / 10);
 		result.push(temp % 10);
 		i += 1;
-	} while (i < digits1.length1 || i < digits2.length);
+	} while (i < digits1.length || i < digits2.length);
 
 	while (carry) {
 		result.push(carry % 10);
@@ -129,6 +133,25 @@ BigInt.prototype.pow = function (exp) {
 	}
 
 	return new BigInt(resultDigits);
+}
+
+BigInt.prototype.compareTo = function (other) {
+	var d1 = this._digits;
+	var d2 = other._digits;
+	if ( (d1.length > 1 && d1[d1.length-1] === 0)
+		|| (d2.length > 1 && d2[d2.length - 1] === 0) ) {
+			throw "Can't have leading 0s";
+	}
+
+	if (d1.length !== d2.length) {
+		return d1.length - d2.length;
+	}
+	// else, they must have equal digits!
+	var i = d1.length - 1;
+
+	while ( i >= 0 && d1[i] === d2[i]) { i--; }
+
+	return i >= 0 ? d1[i] - d2[i] : 0;	
 }
 
 BigInt.prototype.toString = function () {
