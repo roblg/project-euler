@@ -129,7 +129,8 @@ BigInt.prototype.pow = function (exp) {
 	exp--;
 
 	while (exp > 0) {
-		resultDigits = digitMultiply(resultDigits, this._digits);	
+		resultDigits = digitMultiply(resultDigits, this._digits);
+		exp--;
 	}
 
 	return new BigInt(resultDigits);
