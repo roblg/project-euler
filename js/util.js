@@ -14,7 +14,7 @@ var fibIterator = exports.fibIterator = function () {
 
 var range = exports.range = function (a, b) {
 	var arr = [];
-	for (i = a; i < b; i += 1) {
+	for (var i = a; i < b; i += 1) {
 		arr.push(i);
 	}
 	return arr;
@@ -283,3 +283,22 @@ var makeCachingTotientFunction = exports.makeCachingTotientFunction = function (
 
 	}
 }
+
+// Another way to calculate totient. Can be generalized to create a totient sieve (Problem 70)
+// function distinctPrimeFactors (n) {
+// 	return primes.filter(function (f) { return n % f === 0; });
+// }
+// var primeFactors = util.primeFactors;
+// var totient = function (n) {
+// 	var pf = distinctPrimeFactors(n);
+// 	var totientAcc = n;
+// 	var curr, last;
+// 	while (curr = pf.pop()) {
+// 		if (curr === last) {
+// 			continue;
+// 		}
+// 		last = curr;
+// 		totientAcc *= (curr - 1) / curr;
+// 	}
+// 	return totientAcc;
+// }
