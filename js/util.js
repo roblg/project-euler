@@ -199,13 +199,16 @@ var permutations = exports.permutations = function (arr) {
 	return result;
 }
 
-var extractDigits = exports.extractDigits = function (n) {
+var extractDigits = exports.extractDigits = function (n, doReverse) {
 	var result = [];
 	do {
 		result.push(n % 10);
 		n = Math.floor(n / 10);
 	} while (n > 0);
-	result.reverse();
+
+	if (doReverse || typeof doReverse === 'undefined') {
+		result.reverse();
+	}
 	return result;
 }
 
