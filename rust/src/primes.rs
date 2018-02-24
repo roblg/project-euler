@@ -34,8 +34,11 @@ impl Primes {
 
         // println!("{:?}", possible_primes);
 
-        while possible_primes.len() > 0 {
+        loop {
             let p = possible_primes[0];
+            if (p as f64) >= (target as f64).sqrt() {
+                break;
+            }
             self.primes.push(p);
             possible_primes = possible_primes[1..]
                 .iter()
@@ -43,6 +46,8 @@ impl Primes {
                 .filter(|&x| x % p != 0)
                 .collect();
         }
+
+        self.primes.extend(possible_primes);
 
         self.upto = target;
     }
